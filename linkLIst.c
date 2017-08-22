@@ -16,7 +16,7 @@ pNode init(void ){
     head->next = NULL;
     return head;
 }
-int add(pNode head, void * data){
+int push(pNode head, void * data){
     pNode new_node = malloc(sizeof(pNode));
     pNode preNext = head->next;
     
@@ -33,8 +33,35 @@ int add(pNode head, void * data){
     return 0;
 }
 
+
+pNode remove_node(pNode head,int index){
+    if(head == NULL) return NULL;
+    
+    //head = head->next;
+    for(int i = 0; i < index; i++){
+        head = head->next;
+    }
+    pNode to_be_removed = head->next;
+    
+    head->next = to_be_removed->next;
+    free(to_be_removed);
+    
+    return to_be_removed;
+}
+
+int get_list_size(pNode head){
+    int size = 0;
+    while(head->next!=NULL){
+        head = head->next;
+        size++ ;
+    }
+    
+    return  size;
+}
+
+
 pNode get(pNode head,  int index){
-//pNode current = head->next;
+     head = head->next;
     for(int i = 0; i < index; i++){
         head = head->next;
     }

@@ -17,12 +17,17 @@ typedef struct Node_ {
 
 
 
- pNode init(void );
-int add(pNode head, void * data);
+pNode init(void );
+int push(pNode head, void * data);
 
 pNode get(pNode head, int index);
 
 void destroy(pNode head);
+
+pNode remove_node(pNode head , int index);
+
+int get_list_size(pNode head);
+
 
 
 #endif /* linkList_h */

@@ -8,18 +8,35 @@
 
 #include <stdio.h>
 #include "linkList.h"
+#include "hashMap.h"
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    pNode head = init();
-    int one = 10;
-    int two  = 20;
-    add(head, &one);
-    printf("the second pointer is %p",&two);
-    add(head, &two);
+//    pNode head = init();
+//    int one = 10;
+//    int two  = 20;
+//    int three  = 30;
+//    push(head, &one);
+//    //printf("the second pointer is %p",&two);
+//    push(head, &two);
+//    push(head, &three);
+//    
+//    printf("the list size is %d\n", get_list_size(head));
+//    
+//    pNode removed_node = remove_node(head, 2);
+//    
+//    printf("the removed node value is %d\n", *(int *)removed_node->e);
+//    
+//    
+//    printf("after remove a node , the list size is %d\n", get_list_size(head));
     
-    printf("the second element is %d", (*(int*)(pNode)get(head, 2)->e));
+    //printf("the second element is %d", (*(int*)(pNode)get(head, 1)->e));
     
-    printf("Hello, World!\n");
+    printf("hash value of 'hello' is %d\n", hash("hello") );
+    
+    pNode* map = init_hash_map(20);
+    
+    printf("the size of the map %d\n", get_map_size(map) );
     return 0;
 }
