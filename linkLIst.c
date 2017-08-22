@@ -42,4 +42,14 @@ pNode get(pNode head,  int index){
     return head;
 }
 
+void destroy(pNode head){
+    while(head->next !=NULL){
+        pNode next = head->next;
+        
+        free(head->e);
+        free(head);
+        head = next;
+    }
+}
+
 

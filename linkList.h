@@ -22,5 +22,7 @@ int add(pNode head, void * data);
 
 pNode get(pNode head, int index);
 
+void destroy(pNode head);
+
 
 #endif /* linkList_h */
