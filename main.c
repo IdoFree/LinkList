@@ -49,9 +49,11 @@ int main(int argc, const char * argv[]) {
     
     hash_map_put(map, "hello", "world");
     
-    printf("the value of hello is %s", hash_map_get(map, "hello"));
+    printf("the value of hello is %s\n", hash_map_get(map, "hello"));
     
+    hash_map_put(map, "hello", "c language");
     
+    printf("the value of hello is %s\n", hash_map_get(map, "hello"));
     
     return 0;
 }

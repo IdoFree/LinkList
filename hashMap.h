@@ -32,5 +32,9 @@ int hash(char * key);
 
 int get_map_size(pNode* map );
 
+void destroy_map(pNode* map);
+
+static char* get_key(pNode node);
+static void* get_val_ptr(pNode node);
 
 #endif /* hashMap_h */

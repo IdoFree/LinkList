@@ -16,6 +16,7 @@ pNode* init_hash_map(int size){
         size = DEFAULT_TABLE_SIZE;
     }
     
+    //mallloc one more area for storing the size
     pNode* hash_table = calloc(size+1,sizeof(pNode) );
     if(hash_table == NULL){
         printf("no memory available !");
@@ -42,20 +43,62 @@ int hash_map_put(pNode* map ,char* key, void* val){
     int hash_val = hash(key);
     int index_to_put = hash_val % get_map_size(map);
     
+    //move one more step ,cause the first posistion is for the int *
+    
     pNode* table_head = (map+1);
-    if((*(table_head+index_to_put)) == NULL){
-        *(table_head+index_to_put) = init();
-        pNode list_head = *(table_head+index_to_put);
+    //pNode list_head = *(table_head+index_to_put);
+    
+    pNode*  original_list_head =(table_head+index_to_put);
+    
+    if(*(table_head+index_to_put) == NULL){
+        //list_head = init();
+        *(table_head+index_to_put)= init();
+        pNode list_head =*(table_head+index_to_put);
         pPair p = calloc(1, sizeof(Pair));
         p->key = key;
         p->val = val;
         
         push(list_head, p);
         
+    }else{
+        pNode list_head =*(table_head+index_to_put);
+        list_head = list_head->next;
+        while (list_head!=NULL) {
+            char * stored_key =  get_key(list_head);
+            if(strcmp(stored_key, key) == 0){
+                //repalce the val
+                ((Pair *)(list_head->e))->val = val;
+                
+                
+                return 0;
+            }
+            
+            list_head = list_head->next;
+        }
+        
+        //if no value found , insert to the list
+        
+        pPair p = calloc(1, sizeof(Pair));
+        p->key = key;
+        p->val = val;
+        
+        push(*original_list_head, p);
+        
     }
     
     
     return 0;
+}
+
+static void* get_val_ptr(pNode node){
+    return  ((Pair *)(node->e))->val;
+
+}
+
+
+static char* get_key(pNode node){
+    return  ((Pair *)(node->e))->key;
+    
 }
 
 void* hash_map_get(pNode* map ,char* key){
@@ -76,6 +119,25 @@ void* hash_map_get(pNode* map ,char* key){
     
     return NULL;
 }
+
+
+void destroy_map(pNode* map){
+    //free the list
+    pNode* table_head = (map+1);
+    int map_size = get_map_size(map);
+    
+    for(int i =0; i < map_size; i++){
+        destroy(*(table_head+1));
+    }
+    
+    //free the size
+    int* pSize = (int *)*map;
+    free(pSize);
+    
+    
+    
+}
+
 
 int hash(char * key){
     unsigned long  len = strlen(key);
