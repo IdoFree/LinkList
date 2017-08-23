@@ -14,10 +14,11 @@
 
 #define DEFAULT_TABLE_SIZE 10
 
-typedef struct HashMap_{
+typedef struct Pair_{
+    char* key;
+    void* val;
     
-    
-}HashMap, *pHashMap;
+}Pair, *pPair;
 
 typedef  pNode* Map;
 

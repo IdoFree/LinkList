@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include "linkList.h"
 #include "hashMap.h"
-
+#include <stdlib.h>
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -33,10 +33,25 @@ int main(int argc, const char * argv[]) {
     
     //printf("the second element is %d", (*(int*)(pNode)get(head, 1)->e));
     
-    printf("hash value of 'hello' is %d\n", hash("hello") );
+    //int **p = malloc(sizeof(int* ) * 10);
     
-    pNode* map = init_hash_map(20);
     
-    printf("the size of the map %d\n", get_map_size(map) );
+    
+    
+    
+    //printf("hash value of 'hello' is %d\n", hash("hello") );
+    
+    //pNode* map = init_hash_map(20);
+    
+    //printf("the size of the map %d\n", get_map_size(map) );
+    
+    Map map = init_hash_map(5);
+    
+    hash_map_put(map, "hello", "world");
+    
+    printf("the value of hello is %s", hash_map_get(map, "hello"));
+    
+    
+    
     return 0;
 }
