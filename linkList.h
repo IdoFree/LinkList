@@ -29,8 +29,4 @@ pNode remove_node(pNode head , int index);
 int get_list_size(pNode head);
 
 
-
-
-
-
 #endif /* linkList_h */
