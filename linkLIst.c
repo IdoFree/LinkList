@@ -70,6 +70,7 @@ pNode get(pNode head,  int index){
 }
 
 void destroy(pNode head){
+    if(head == NULL) return ;
     while(head->next !=NULL){
         pNode next = head->next;
         

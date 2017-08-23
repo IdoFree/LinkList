@@ -127,7 +127,8 @@ void destroy_map(pNode* map){
     int map_size = get_map_size(map);
     
     for(int i =0; i < map_size; i++){
-        destroy(*(table_head+1));
+        
+        destroy(*(table_head+i));
     }
     
     //free the size

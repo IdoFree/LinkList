@@ -54,6 +54,10 @@ int main(int argc, const char * argv[]) {
     hash_map_put(map, "hello", "c language");
     
     printf("the value of hello is %s\n", hash_map_get(map, "hello"));
+    hash_map_put(map, "ido", "shary");
+    printf("the value of ido is %s\n", hash_map_get(map, "ido"));
+    
+    destroy_map(map);
     
     return 0;
 }
