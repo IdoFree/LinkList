@@ -58,6 +58,6 @@ int main(int argc, const char * argv[]) {
     printf("the value of ido is %s\n", hash_map_get(map, "ido"));
     
     destroy_map(map);
-    
+    // add some commnet for git test    
     return 0;
 }
